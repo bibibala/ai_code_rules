@@ -16,6 +16,13 @@ Use this skill for **frontend UI design and interface creation** in any project 
 - Handling styling and visual effects
 - Any development task involving user interfaces
 
+Scope boundary:
+
+- This skill is frontend-only.
+- It applies only to frontend pages, frontend components, prototypes, interaction design, and visual implementation.
+
+If the user explicitly requests **IBM / Carbon / 企业级黑白+单一蓝色强调 / token 化 / 8px 网格 / 0 圆角** style, use **ibm-carbon-design** instead (this skill’s “forbidden fonts/colors” rules do not apply to Carbon-style requirements).
+
 Do NOT use for:
 
 - Backend logic or API design
@@ -27,30 +34,31 @@ Do NOT use for:
 ## How to use this skill (for a coding agent)
 
 1. **MANDATORY: Complete Design Specification First**
-   - Before writing ANY interface code, you MUST explicitly output the design specification
-   - This includes: Purpose Statement, Aesthetic Direction, Color Palette, Typography, Layout Strategy
-   - Never skip this step
+    - Before writing ANY interface code, you MUST explicitly output the design specification
+    - This includes: Purpose Statement, Aesthetic Direction, Color Palette, Typography, Layout Strategy
+    - Never skip this step
 
 2. **Follow the Design Process**
-   - User Experience Analysis
-   - Product Interface Planning
-   - Aesthetic Direction Determination
-   - High-Fidelity UI Design
-   - Frontend Prototype Implementation
-   - Realism Enhancement
+    - User Experience Analysis
+    - Product Interface Planning
+    - Aesthetic Direction Determination
+    - High-Fidelity UI Design
+    - Frontend Prototype Implementation
+    - Realism Enhancement
 
-3. **Avoid Generic AI Aesthetics**
-   - Never use forbidden colors (purple, violet, indigo, fuchsia, blue-purple gradients)
-   - Never use forbidden fonts (Inter, Roboto, Arial, Helvetica, system-ui, -apple-system)
-   - Never use standard centered layouts without creative breaking
-   - Never use emoji as icons - always use professional icon libraries
+3. **Mandatory Visual Rules**
+    - Never use forbidden colors (purple, violet, indigo, fuchsia, blue-purple gradients)
+    - Never use forbidden fonts (Inter, Roboto, Arial, Helvetica, system-ui, -apple-system)
+    - Never use standard centered layouts without creative breaking
+    - Never use emoji as icons - always use professional icon libraries
+    - The final UI must look visually refined at a glance, not cluttered, bloated, or noisy
 
 4. **Run Self-Audit Before Submitting**
-   - Color audit
-   - Font audit
-   - Icon audit
-   - Layout audit
-   - Design specification compliance check
+    - Color audit
+    - Font audit
+    - Icon audit
+    - Layout audit
+    - Design specification compliance check
 
 ---
 
@@ -123,15 +131,16 @@ Action: Go back to Design Specification → Choose alternative aesthetic → Pro
 
 - **Avoid Generic Fonts**: Do not use overly common fonts like Arial, Inter, Roboto, system fonts
 - **Choose Distinctive Fonts**: Select beautiful, unique, and interesting fonts, for example:
-  - Choose distinctive display fonts paired with refined body fonts
-  - Consider using distinctive font combinations to elevate the interface's aesthetic level
-  - Font selection should align with the overall aesthetic direction
+    - Choose distinctive display fonts paired with refined body fonts
+    - Consider using distinctive font combinations to elevate the interface's aesthetic level
+    - Font selection should align with the overall aesthetic direction
 
 ### Color & Theme
 
-- **Unified Aesthetics**: Use CSS variables for consistency
+- **Unified Aesthetics**: Must use CSS variables for consistency
 - **Dominant Colors with Accents**: Using dominant colors with sharp accents is more effective than evenly-distributed color schemes
-- **Theme Consistency**: Choose dark or light themes based on aesthetic direction, ensure color choices match the overall style
+- **Theme Consistency**: Must choose dark or light themes based on aesthetic direction, and ensure color choices match the overall style
+- **Visual Cleanliness**: The interface must look refined at a glance: hierarchy clear, spacing steady, typography controlled, and surfaces not noisy
 
 ### Motion Design
 
@@ -144,11 +153,11 @@ Action: Go back to Design Specification → Choose alternative aesthetic → Pro
 
 - **❌ FORBIDDEN: Emoji Icons**: Never use emoji characters as icons (🚀, ⭐, ❤️, etc.)
 - **✅ REQUIRED: Professional Icon Libraries**: Must use professional icon libraries such as:
-  - FontAwesome (recommended for most projects)
-  - Heroicons (for Tailwind CSS projects)
-  - Material Icons
-  - Feather Icons
-  - Lucide Icons
+    - FontAwesome (recommended for most projects)
+    - Heroicons (for Tailwind CSS projects)
+    - Material Icons
+    - Feather Icons
+    - Lucide Icons
 - **Icon Consistency**: Use icons from a single library throughout the project for visual consistency
 - **Icon Styling**: Icons should match the overall aesthetic direction and color palette
 
@@ -157,20 +166,21 @@ Action: Go back to Design Specification → Choose alternative aesthetic → Pro
 - **Break Conventions**: Use unexpected layouts, asymmetry, overlap, diagonal flow
 - **Break the Grid**: Use grid-breaking elements
 - **Negative Space Control**: Either use generous negative space or control density
+- **Elegant Restraint**: Even when the design is bold, it must avoid visual clutter, random decoration, and too many competing focal points
 
 ### Backgrounds & Visual Details
 
 - **Atmosphere Creation**: Create atmosphere and depth rather than defaulting to solid colors
 - **Contextual Effects**: Add contextual effects and textures that match the overall aesthetic
 - **Creative Forms**: Apply creative forms, such as:
-  - Gradient meshes
-  - Noise textures
-  - Geometric patterns
-  - Layered transparencies
-  - Dramatic shadows
-  - Decorative borders
-  - Custom cursors
-  - Grain overlays
+    - Gradient meshes
+    - Noise textures
+    - Geometric patterns
+    - Layered transparencies
+    - Dramatic shadows
+    - Decorative borders
+    - Custom cursors
+    - Grain overlays
 
 ### Avoid Generic AI Aesthetics
 
@@ -181,6 +191,7 @@ Action: Go back to Design Specification → Choose alternative aesthetic → Pro
 - Predictable layouts and component patterns
 - Cookie-cutter design that lacks context-specific character
 - **Emoji icons**: Never use emoji characters (🚀, ⭐, ❤️, etc.) as icons - always use professional icon libraries
+- Visually messy pages with too many borders, shadows, badges, highlights, and decorative blocks competing at once
 
 ### ❌ ANTI-PATTERNS (Code Examples to NEVER Use)
 
@@ -194,16 +205,16 @@ className="bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50" // Warm edi
 className="bg-gradient-to-tr from-emerald-900 to-teal-700" // Dark organic
 className="bg-[#FF6B35] to-[#F7931E]" // Bold retro-futuristic
 
-// ❌ BAD: Generic centered card layout
-<div className="flex items-center justify-center min-h-screen">
-  <div className="bg-white rounded-lg shadow-lg p-8">
+    // ❌ BAD: Generic centered card layout
+    <div className="flex items-center justify-center min-h-screen">
+    <div className="bg-white rounded-lg shadow-lg p-8">
 
-// ✅ GOOD: Asymmetric layout with creative positioning
-<div className="grid grid-cols-12 min-h-screen">
-  <div className="col-span-7 col-start-2 pt-24">
+    // ✅ GOOD: Asymmetric layout with creative positioning
+    <div className="grid grid-cols-12 min-h-screen">
+    <div className="col-span-7 col-start-2 pt-24">
 
-// ❌ BAD: System fonts
-font-family: 'Inter', system-ui, sans-serif
+    // ❌ BAD: System fonts
+    font-family: 'Inter', system-ui, sans-serif
 font-family: 'Roboto', -apple-system, sans-serif
 
 // ✅ GOOD: Distinctive fonts
@@ -224,14 +235,14 @@ font-family: 'DM Serif Display', serif // Luxury
 
 - **Creative Interpretation**: Interpret requirements creatively, make unexpected choices, make designs feel genuinely designed for the context
 - **Avoid Repetition**: Each design should be different, vary between generations:
-  - Light and dark themes
-  - Different fonts
-  - Different aesthetic styles
+    - Light and dark themes
+    - Different fonts
+    - Different aesthetic styles
 - **Avoid Convergence**: Never converge on common choices (e.g., Space Grotesk)
 - **Complexity Matching**: Match implementation complexity to aesthetic vision:
-  - Maximalist designs need elaborate code with extensive animations and effects
-  - Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details
-  - Elegance comes from executing the vision well
+    - Maximalist designs need elaborate code with extensive animations and effects
+    - Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details
+    - Elegance comes from executing the vision well
 
 ## Design Constraints
 
@@ -276,13 +287,13 @@ Run these checks on your generated code:
    ```
 
 4. **Layout Audit**:
-   - Does the layout use asymmetry/diagonal/overlap? (Required: YES)
-   - Is there creative grid-breaking? (Required: YES)
-   - Are elements only centered with symmetric spacing? (Allowed: NO)
+    - Does the layout use asymmetry/diagonal/overlap? (Required: YES)
+    - Is there creative grid-breaking? (Required: YES)
+    - Are elements only centered with symmetric spacing? (Allowed: NO)
 
 5. **Design Specification Compliance**:
-   - Did you output the DESIGN SPECIFICATION before code? (Required: YES)
-   - Does the code match the aesthetic direction you declared? (Required: YES)
+    - Did you output the DESIGN SPECIFICATION before code? (Required: YES)
+    - Does the code match the aesthetic direction you declared? (Required: YES)
 
 If any audit fails → Re-design with correct approach
 

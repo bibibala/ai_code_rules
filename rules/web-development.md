@@ -2,7 +2,7 @@
 name: web-development
 alwaysApply: false
 priority: 1
-description: Vue 3 + JavaScript web project rules for Trae AI
+description: Vue 3 Web project rules for Trae AI
 ---
 
 # Vue 3 Web Project Rules
@@ -10,13 +10,15 @@ description: Vue 3 + JavaScript web project rules for Trae AI
 ## Scope
 
 - This rule set is frontend-only and applies to Vue 3 web projects.
+- This is a conditional stack rule: enable it only when the target project is actually a Vue 3 web project.
+- Follow the existing project language. If the project is JavaScript, keep JavaScript. If the project is already TypeScript, follow TypeScript and do not mix languages without a clear reason.
 - It does not constrain backend service implementation, database design, or server runtime standards.
 - In full-stack delivery, apply this file only to frontend directories and frontend code changes.
 
 ## Tech Stack
 
 - **Framework**: Vue 3 (Composition API)
-- **Language**: JavaScript (no TypeScript)
+- **Language**: Follow the existing project setup (JavaScript-first examples in this file)
 - **Styling**: Plain CSS (scoped per component)
 - **Build Tool**: Vite
 
@@ -118,6 +120,7 @@ export const useUserStore = defineStore('user', () => {
 - Centralize all HTTP calls in `src/api/`.
 - 新增接口前，先确定本次会新增或修改哪些 `src/api/*` 文件，再开始实现。
 - 对外暴露的 API 方法必须返回“可判定结果”，禁止通过 `throw` 把异常流转到业务层。
+- API 返回结构与 `ai-code-quality.md` 保持一致，统一使用 `{ code, data, message }`。
 - `try/catch` 仅允许在请求封装或基础设施层用于错误归一化。
 - Never call `fetch`, `axios`, or `request.xxx(...)` directly from a component or store.
 - API 文件组织必须遵守 `api-file-split.md`。
@@ -125,8 +128,10 @@ export const useUserStore = defineStore('user', () => {
 ```js
 export async function fetchUser(id) {
   const res = await request.get(`/api/users/${id}`);
-  if (!res.ok) return res;
-  return res;
+  if (!res) {
+    return { code: -1, data: null, message: 'request failed' };
+  }
+  return { code: 200, data: res, message: 'success' };
 }
 ```
 
@@ -158,7 +163,7 @@ const routes = [
 
 ## Error Handling
 
-- 不通过异常做业务流程控制；所有异步调用必须被显式处理，例如判断 `ok`。
+- 不通过异常做业务流程控制；所有异步调用必须被显式处理，例如判断 `code === 200`。
 - UI 层只展示对用户友好的错误信息。
 - 技术细节通过项目内统一的 `logger` 处理。
 - Use a composable like `useErrorHandler` when the project has that pattern.

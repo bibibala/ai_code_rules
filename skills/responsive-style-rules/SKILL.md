@@ -1,9 +1,14 @@
 ---
 name: responsive-style-rules
-description: 编写 CSS/样式代码时强制执行响应式适配规范和间距规范。当 AI 编写任何涉及宽度、高度、间距（margin/padding）、布局的样式代码时触发，避免写死尺寸、避免用 margin/padding 直接处理组件间距。适用于 CSS、Tailwind、SCSS、styled-components、uni-app、React Native 等所有样式场景。
+description: 编写前端 CSS/样式代码时强制执行响应式适配规范和间距规范。当 AI 编写任何涉及宽度、高度、间距（margin/padding）、布局的前端样式代码时触发，避免写死尺寸、避免用 margin/padding 直接处理组件间距。适用于前端 CSS、Tailwind、SCSS、styled-components、uni-app、React Native 等样式场景。
 ---
 
 # 响应式样式规范 (Responsive Style Rules)
+
+## 适用范围
+
+- 仅适用于前端样式开发，包括 Web、H5、小程序、React Native、uni-app 等前端界面样式场景。
+- 不适用于后端模板渲染规范、服务端输出格式、数据库字段设计或非前端任务。
 
 ## 核心原则
 
