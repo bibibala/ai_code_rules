@@ -25,6 +25,7 @@
 
 - `rules/ai-coding-principles.md`：AI 编码通用原则（代码优先、保持简单、可读、可验证）
 - `rules/ai-code-quality.md`：前端代码质量与错误处理规范
+- `rules/ai-code-aesthetic-order.md`：前端代码审美与结构秩序规则（密度、分层、函数重量、对称性、判断方向）
 - `rules/ai-package-strategy.md`：前端依赖策略（统一使用 pnpm，复杂功能优先评估成熟 npm 包）
 - `rules/ai-no-loop-api-calls.md`：禁止前端循环调用 API 拼接数据
 - `rules/ai-select-use-list-api.md`：选项类组件必须使用 list/专用选项接口
@@ -47,8 +48,9 @@
 
 - `rules/ai-coding-principles.md`
 - `rules/ai-code-quality.md`
+- `rules/ai-code-aesthetic-order.md`
 
-这两份解决“代码基本质量”和“输出基本方式”，适合作为底层常驻规则。
+这三份解决“代码基本质量”“输出基本方式”和“代码结构质感”，适合作为底层常驻规则。
 
 ### 二级：前端结构和数据获取规则
 
